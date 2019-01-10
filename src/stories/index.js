@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-extraneous-dependencies,jsx-a11y/anchor-is-valid */
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
@@ -50,8 +50,8 @@ storiesOf('SideMenuBase', module)
         <SideMenuBase items={ [
           'plain text',
           <CustomMenuItem>Custom component</CustomMenuItem>,
-          <div style={{ width: '120px', display: 'inline-block' }}>
-            <img style={{ width: '100%' }} src={reactLogo} alt="react logo" />
+          <div style={ { width: '120px', display: 'inline-block' } }>
+            <img style={ { width: '100%' } } src={ reactLogo } alt="react logo" />
           </div>,
           <>
             <input type="text" value="input element" />
@@ -62,4 +62,27 @@ storiesOf('SideMenuBase', module)
         />
       );
     },
+  )
+  .add(
+    'side menu, into container with alignment to the bottom',
+    () => (
+      <div style={ {
+        width: '300px',
+        height: '300px',
+        margin: '50px',
+        display: 'inline-block',
+        position: 'relative',
+        border: 'solid 1px #CCC',
+      } }
+      >
+        <SideMenuBase
+          align="bottom"
+          items={ [
+            <a href="#">link1</a>,
+            <a href="#">link2</a>,
+            <a href="#">link3</a>,
+          ] }
+        />
+      </div>
+    ),
   );
